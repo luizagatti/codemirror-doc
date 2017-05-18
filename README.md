@@ -1,21 +1,21 @@
 # CodeMirror
 
-<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+João Paulo S. R. Bastos, Lucas Henrique C. de Lima, Luiza de A. Gatti
 
-- [CodeMirror](#codemirror)
-	- [Introdução](#introduo)
-	- [Evolução do Sistema](#evoluo-do-sistema)
-	- [Como usar: uso básico](#como-usar-uso-bsico)
-	- [Carregadores de Módulo](#carregadores-de-mdulo)
-	- [Configuração](#configurao)
-	- [Eventos](#eventos)
-	- [Atalhos de teclado (keymaps)](#atalhos-de-teclado-keymaps)
-	- [Comandos](#comandos)
-	- [Personalização](#personalizao)
-	- [API](#api)
+## Índice
+- [Introdução](#introdução)
+- [Evolução do Sistema](#evolução-do-sistema)
+- [Como usar: uso básico](#como-usar-uso-básico)
+- [Carregadores de Módulo](#carregadores-de-módulo)
+- [Configuração](#configuração)
+- [Eventos](#eventos)
+- [Atalhos de teclado (keymaps)](#atalhos-de-teclado-keymaps)
+- [Comandos](#comandos)
+- [Personalização](#personalização)
+- [API](#api)
 
-<!-- /TOC -->
 ## Introdução
+[Voltar ao topo](#Índice)
 
 CodeMirror é um componente de editor de código que pode ser incorporado em páginas da Web. Sua biblioteca central fornece apenas o componente do editor, sem botões, auto-complete ou outra funcionalidade de IDE. Ele fornece uma API rica na qual essa funcionalidade pode ser implementada diretamente.
 
@@ -29,6 +29,8 @@ A Figura 1 ilustra um exemplo de utilização do CodeMirror para a criação de 
 >*Figura 1*
 
 ## Evolução do Sistema
+[Voltar ao topo](#Índice)
+
 O sistema apresenta até o momento um total de 104 *releases*, tendo a versão 5.25.2 como a atual, lançada no dia 20/04/2017. As primeiras versões beta do sistema foram lançadas em Fevereiro de 2011, enquanto a versão *Release Candidate*, CodeMirror 2, ficou disponível a partir do mês de Março do mesmo ano. A partir de então, releases frequentes até a versão atual foram lançadas com o objetivo de solucionar problemas existentes e adicionar, alterar, e/ou remover funcionalidades existentes com uma frequência média mensal. Os dados abaixo sobre a evolução do sistema foram obtidos no dia 18 de maio de 2017. Até a presente data, algumas informações, como quantidade de *releases*, podem ter mudado.
 
 Analisando primeiramente a evolução do número de colaboradores através da Figura 2 que apresenta os dados da Janeiro de 2011 até Maio de 2017, observamos que o pico de colaboradores acontece nos anos iniciais do sistema, observando uma tendência decrescente nos últimos anos. O usuário com o maior número de commits, *marijnh*, possui 3.971 commits, seguido por *mightyguava*, com apenas 130. O número total de colaboradores é 645. Veja o gráfico a seguir:
@@ -65,6 +67,8 @@ Uma análise final referente ao número de commits está relacionado aos horári
 >*Figura 8*
 
 ## Como usar: uso básico
+[Voltar ao topo](#Índice)
+
 O jeito mais fácil de fazer uso do CodeMirror é carregando um *script* e a *style sheet* (que pode ser encontrada em lib/), junto com um script de modo de algum dos diretórios mode/. Exemplo:
 
 ![Figura 9](img/fig08.png)
@@ -85,6 +89,8 @@ O editor será anexado ao corpo do documento, começará vazio e irá usar o mod
 Essa função irá inicializar o editor com um pedaço de código já nele, e explicitamente dizer-lhe para usar o modo JavaScript (que é útil quando vários modos são carregados).
 
 ## Carregadores de Módulo
+[Voltar ao topo](#Índice)
+
 Carregadores de Módulo
 Os arquivos no CodeMirror contém bibliotecas auxiliares para carregá-los em ambientes AMD ou *CommonJS*. Se as variáveis *exports* e *module* já existirem como objetos, o estilo de CommonJS será usado. Caso contrário estilo AMD será usado.
 
@@ -96,6 +102,8 @@ Um exemplo de como usar RequireJS para carregar o CodeMirror
 >*Figura 12*
 
 ## Configuração
+[Voltar ao topo](#Índice)
+
 Tanto a função do CodeMirror quanto seu método *fromTextArea* usam como segundo argumento (que é opcional) um objeto que contém as opções de configurações. Qualquer opção que não é fornecida desta forma será retirado de *CodeMirror.defaults*, que é um objeto que contém as opções padrão. É possível atualizar o objeto para mudar as características padrão da sua página.
 
 Algumas das opções suportadas:
@@ -113,6 +121,8 @@ Existem também várias outras opções como *electricChars, specialChars, keyMa
 É possível notar como o CodeMirror é personalizável.
 
 ## Eventos
+[Voltar ao topo](#Índice)
+
 Vários objetos relacionados ao CodeMirror emitem eventos que permitem que o código do cliente reaja a várias situações. Manipuladores para tais eventos podem ser inicializados com os métodos *on* e *off*. Para acionar seus próprios eventos, use *CodeMirror.signal(target, name, args…).*
 
 Uma instância de editor aciona os seguintes eventos: *change, changes, beforeChange, cursorActivity, keyHandled, inputRead, electricInput, beforeSelectionChange, viewportChange, swapDoc, gutterClick, gutterContextMenu, focus, blur, scroll, refresh, optionChange, scrollCursorIntoView, update, renderLine, mousedown, dbclick, touchstart, contextmenu, keydown, keypress, keyup, cut, copy, paste, dragstart, dragenter, dragover, dragleave, drop.*
@@ -120,6 +130,8 @@ Uma instância de editor aciona os seguintes eventos: *change, changes, beforeCh
 Objetos de documento emitem os seguintes eventos: *change, beforeChange, cursorActivity, beforeSelectionChange, delete, change, beforeCursosEnter, clear, hide, unhide, redraw.*
 
 ## Atalhos de teclado (keymaps)
+[Voltar ao topo](#Índice)
+
 Os *keymaps* são formas de associar chaves a funcionalidades. Um *keymap* é um objeto que mapeia strings para identificar as chaves para funções que implementam suas funcionalidades. O CodeMirror possui os atalhos presentes nos editores *Emacs, Vim e Sublime Text* como estilos pré-definidos.
 
 Chaves são identificadas pelo seu nome ou caractere. O objeto *CodeMirror.keyNames* define nomes para chaves comuns e os associam a códigos de chave. Exemplos de nomes são *Enter* e *F5*. Eles podem ter como prefixo *shift-, cmd-, ctrl-* ou *alt-* para algum modificador específico.
@@ -142,6 +154,8 @@ Mapas-chave para comandos cujo nome começa com os caracteres *“go”* ou para
 Mapas-chave podem diferir uns aos outros usando uma propriedade *fallthrough*. Isso indica que quando a chave não é encontrada no mapa, um ou mais mapas devem ser pesquisados. Ele consegue fazer isso com um único mapa-chave ou um vetor de mapas-chave. Quando um mapa-chave precisa de definir algo ao ficar ativo, ou destruir ao ficar desativo, ele pode contar as propriedades *attach* e/ou *detach*.
 
 ## Comandos
+[Voltar ao topo](#Índice)
+
 Comandos são ações sem parâmetro que podem ser feitas em um editor. Eles são muito usados através de atalhos do teclado. Comandos são definidos ao adicionar propriedades no objeto *CodeMirror.commands*. Certa quantidade de comandos comuns é definida na biblioteca, a maioria destes comandos é usado por atalhos do teclado padrão.  O valor de uma proriedade de comando deve ser uma função com um único argumento. Alguns dos comandos mostrados abaixo são referenciados no mapa-chave padrão, mas não são definidos na biblioteca central. Eles estão destinados a serem definidos pelo código do usuário. Comandos também podem rodar com o método *execCommand*.
 
 Alguns comandos:
@@ -167,6 +181,8 @@ Alguns comandos:
 | newlineAndIndent | Insere uma nova linha auto-indentada | Enter |
 
 ## Personalização
+[Voltar ao topo](#Índice)
+
 Até determinado ponto a aparência do CodeMirror pode ser modificada, basta alterar as folhas de estilo. As folhas de estilo provém as cores do modo e podem ser adaptadas de uma forma bem direta. Para personalizar o editor basta alterar ou sobrepor os estilos que estão definidos em *codemirror.css.*
 
 Se a folha de estilo da sua página fizer coisas sem sentido com todos os elementos *div* ou *pre*, você terá que definir regras para cancelar ester efeitos. Temas também são arquivos CSS simples que definem cores para vários elementos estáticos. É possível vê-los na pasta *theme*.
@@ -184,6 +200,8 @@ Alguns cuidados devem ser tomados, já que várias regras neste arquivo são usa
 - *CodeMirror-matchingbracket, CodeMirror-nonmatchingbracket*: é usado para estilizar os colchetes.
 
 ## API
+[Voltar ao topo](#Índice)
+
 Muitas características do CodeMirror só estão disponíveis através de APIs. É preciso escrever códigos ou usar addons se você quiser deixá-las expostas para os usuários. Sempre que pontos no documento são representados, a API usa objetos com propriedades de* line* e *ch*. Se você atribuir algum valor nulo à *ch* ou não especificá-lo, ele será substituído pelo comprimento da linha especificada.
 
 Alguns métodos que podem ser usados:
