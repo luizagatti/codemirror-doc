@@ -136,22 +136,22 @@ Os *keymaps* são formas de associar chaves a funcionalidades. Um *keymap* é um
 
 Chaves são identificadas pelo seu nome ou caractere. O objeto *CodeMirror.keyNames* define nomes para chaves comuns e os associam a códigos de chave. Exemplos de nomes são *Enter* e *F5*. Eles podem ter como prefixo *shift-, cmd-, ctrl-* ou *alt-* para algum modificador específico.
 
-Um exemplo é o mapeamento da tecla tab para inserir espaços ao invés do caractere tab.
+Um exemplo é o atalho de tecla tab para inserir espaços ao invés do caractere tab.
 
 ![Figura 13](img/fig12.png)
 >*Figura 13*
 
-Devido a limitações às formas como navegadores acionam os eventos-chave, eles podem não ser prefixados com modificadores.
+Devido a limitações às formas como navegadores acionam os eventos de tecla, eles podem não ser prefixados com modificadores.
 
-As combinações de teclas com vários movimentos (multi-stroke) podem ser especificadas separando os nomes das chaves por espaços no nome da propriedade, por exemplo ctrl-x ctrl-v. Quando um mapa contém ligações multi-stroke ou chaves com modificadores que não são especificados na ordem padrão (shift-cmd-ctrl-alt), é necessário chamar *CodeMirror.normalizeKeyMap* antes da ação ser usada. Essa função faz com que um mapa-chave e seus modificadores normalizem a ordem de prioridade e reconheçam o atalho multi-stroke. A função retorna o mapa.
+As combinações de teclas com vários movimentos (multi-stroke) podem ser especificadas separando os nomes das chaves por espaços no nome da propriedade, por exemplo ctrl-x ctrl-v. Quando um mapa contém ligações *multi-stroke* ou chaves com modificadores que não são especificados na ordem padrão (shift-cmd-ctrl-alt), é necessário chamar *CodeMirror.normalizeKeyMap* antes da ação ser usada. Essa função faz com que um mapa-chave e seus modificadores normalizem a ordem de prioridade e reconheçam o atalho multi-stroke. A função retorna o mapa.
 
-O objeto *CodeMirror.keyMap* é responsável por associar os mapas-chave com seus nomes. Definições de código do usuário e de mapas-chave podem colocar propriedades extras neste objeto. Em todos os locais onde um mapa-chave é esperado, uma string pode ser adicionada. O objeto também contém o mapa-chave *default*.
+O objeto *CodeMirror.keyMap* é responsável por associar os *keymaps* com seus nomes. Definições de código do usuário e de *keymaps* podem colocar propriedades extras neste objeto. Em todos os locais onde um mapa-chave é esperado, uma string pode ser adicionada. O objeto também contém o atalho de teclado *default*.
 
-As propriedades em mapas-chave podem ser funções de um único argumento, strings ou *false*. Strings fazem referência a comandos. Se uma propriedade é definida como *false*, o CodeMirror deixa com que o navegador seja o responsável pela chave.
+As propriedades em atalhos do teclado podem ser funções de um único argumento, strings ou *false*. Strings fazem referência a comandos. Se uma propriedade é definida como *false*, o CodeMirror deixa com que o navegador seja o responsável pela chave.
 
-Mapas-chave para comandos cujo nome começa com os caracteres *“go”* ou para funções que tem uma propriedade *motion* serão acionados quando um shift extra estiver presente. Exemplo: *“up”* : *“goLineUp”* pode ser usado com up e com shift-up. Tal procedimento é usado para facilitar a implementação da seleção do shift.
+*Keymaps* para comandos cujo nome começa com os caracteres *“go”* ou para funções que tem uma propriedade *motion* serão acionados quando um shift extra estiver presente. Exemplo: *“up”* : *“goLineUp”* pode ser usado com up e com shift-up. Tal procedimento é usado para facilitar a implementação da seleção do shift.
 
-Mapas-chave podem diferir uns aos outros usando uma propriedade *fallthrough*. Isso indica que quando a chave não é encontrada no mapa, um ou mais mapas devem ser pesquisados. Ele consegue fazer isso com um único mapa-chave ou um vetor de mapas-chave. Quando um mapa-chave precisa de definir algo ao ficar ativo, ou destruir ao ficar desativo, ele pode contar as propriedades *attach* e/ou *detach*.
+Atalhos de teclado podem diferir uns aos outros usando uma propriedade *fallthrough*. Isso indica que quando a chave não é encontrada no mapa, um ou mais mapas devem ser pesquisados. Ele consegue fazer isso com um único mapa-chave ou um vetor de mapas-chave. Quando um mapa-chave precisa de definir algo ao ficar ativo, ou destruir ao ficar desativo, ele pode contar as propriedades *attach* e/ou *detach*.
 
 ## Comandos
 [Voltar ao topo](#Índice)
