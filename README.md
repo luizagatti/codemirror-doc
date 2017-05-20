@@ -1,4 +1,4 @@
-# CodeMirror
+# ![](img/logo.png) CodeMirror
 
 João Paulo S. R. Bastos, Lucas Henrique C. de Lima, Luiza de A. Gatti
 
@@ -13,6 +13,7 @@ João Paulo S. R. Bastos, Lucas Henrique C. de Lima, Luiza de A. Gatti
 - [Comandos](#comandos)
 - [Personalização](#personalização)
 - [API](#api)
+- [Addons](#addons)
 
 ## Introdução
 [Voltar ao topo](#Índice)
@@ -107,14 +108,22 @@ Um exemplo de como usar RequireJS para carregar o CodeMirror
 Tanto a função do CodeMirror quanto seu método *fromTextArea* usam como segundo argumento (que é opcional) um objeto que contém as opções de configurações. Qualquer opção que não é fornecida desta forma será retirado de *CodeMirror.defaults*, que é um objeto que contém as opções padrão. É possível atualizar o objeto para mudar as características padrão da sua página.
 
 Algumas das opções suportadas:
-- **value**: é o valor inicial do editor. Pode ser tanto uma string quanto um objeto de documento.
-- **mode**: é o modo de usar. Quando ele não é dado, será definido como padrão o primeiro modo que foi carregado.
-- **lineSeparator**: define explicitamente o separador de linha do editor.
-- **theme**: é o estilo do editor. É preciso ter certeza que o arquivo CSS correspondente ao estilo está carregado. É possível usar várias classes de tema de uma só vez.
-- **indentUnit**: é a quantidade de espaços um bloco deve ser identado. O padrão é 2 por definição.
-- **smartIndent**: define se deve ser usada a indentação sensível ao contexto que o modo fornece.
-- **tabSize**: é a largura do caractere tab. Por definição é 4.
-- **indentWithTabs**: define se, quando indentando os primeiros N* tabSize os espaços serão substituidos por N tabs.
+- **value**:
+    é o valor inicial do editor. Pode ser tanto uma string quanto um objeto de documento.
+- **mode**:
+    é o modo de usar. Quando ele não é dado, será definido como padrão o primeiro modo que foi carregado.
+- **lineSeparator**:
+    define explicitamente o separador de linha do editor.
+- **theme**:
+    é o estilo do editor. É preciso ter certeza que o arquivo CSS correspondente ao estilo está carregado. É possível usar várias classes de tema de uma só vez.
+- **indentUnit**:
+    é a quantidade de espaços um bloco deve ser identado. O padrão é 2 por definição.
+- **smartIndent**:
+    define se deve ser usada a indentação sensível ao contexto que o modo fornece.
+- **tabSize**:
+    é a largura do caractere tab. Por definição é 4.
+- **indentWithTabs**:
+    define se, quando indentando os primeiros N* tabSize os espaços serão substituidos por N tabs.
 
 Existem também várias outras opções como *electricChars, specialChars, keyMap, specialCharPlaceholder, rtlMoveVisually, extraKeys, lineWrapping, lineNumbers, workDelay, firstLineNumber, lineNumberFormatter, gutters, fixedGutter, scrollbarStyle, inputStyle, readOnly, coverGutterNextToScrollbar, showCursorWhenSelecting, lineWiseCopyCut, undoDepth, historyEventDelay, tabindex, autofocus, dragDrop, allowDropFileTypes, cursorBlinkRate, workTime, cursorScrollMargin, cursorHeight, resetSelectionOnContextMenu, pollInterval, flarrenSpans, addModeClass, maxHighLength e viewportMargin.*
 
@@ -188,16 +197,24 @@ Até determinado ponto a aparência do CodeMirror pode ser modificada, basta alt
 Se a folha de estilo da sua página fizer coisas sem sentido com todos os elementos *div* ou *pre*, você terá que definir regras para cancelar ester efeitos. Temas também são arquivos CSS simples que definem cores para vários elementos estáticos. É possível vê-los na pasta *theme*.
 
 Alguns cuidados devem ser tomados, já que várias regras neste arquivo são usadas para fazer com que o CodeMirror funcione. Ajudar as cores não causa problemas e com certo cuidado várias outras coisas podem ser mudadas também. As classes CSS que estão definidas no arquivo segue as seguintes funções:
-
-- *CodeMirror*: é o elemento externo do editor. Ele deve ser usado para altura, largura, bordas e posicionamento do editor. Podem também ser usado para definir estilos que devem conter tudo dentro do editor, como os estilos e tamanhos da fonte, ou para definir um plano de fundo.
-- *CodeMirror-focused*: essa classe é usada para esconder o cursor e dar uma cor diferente para a seleção quando o editor não está selecionado.
-- *CodeMirror-gutters*: é usado para definir a cor de fundo padrão das calhas do programa.
-- *CodeMirror-linenumbers*: é usado para dar um plano de fundo ou largura para a calha que contém o número das linhas.
-- *CodeMirror-linenumber*: é usado para modificar os números das linhas individualmente.
-- *CodeMirror-lines*: são as linhas visíveis. Aqui é onde você pode especificar o preenchimento vertical para o conteúdo do editor.
-- *CodeMirror-cursor*: você pode fazer com que o cursor fique da maneira que você quiser.
-- *CodeMirror-selected*: a seleção é representada por elementos span.
-- *CodeMirror-matchingbracket, CodeMirror-nonmatchingbracket*: é usado para estilizar os colchetes.
+- ***CodeMirror***:
+    é o elemento externo do editor. Ele deve ser usado para altura, largura, bordas e posicionamento do editor. Podem também ser usado para definir estilos que devem conter tudo dentro do editor, como os estilos e tamanhos da fonte, ou para definir um plano de fundo.
+- ***CodeMirror-focused***:
+    essa classe é usada para esconder o cursor e dar uma cor diferente para a seleção quando o editor não está selecionado.
+- ***CodeMirror-gutters***:
+    é usado para definir a cor de fundo padrão das calhas do programa.
+- ***CodeMirror-linenumbers***:
+    é usado para dar um plano de fundo ou largura para a calha que contém o número das linhas.
+- ***CodeMirror-linenumber***:
+    é usado para modificar os números das linhas individualmente.
+- ***CodeMirror-lines***:
+    são as linhas visíveis. Aqui é onde você pode especificar o preenchimento vertical para o conteúdo do editor.
+- ***CodeMirror-cursor***:
+    você pode fazer com que o cursor fique da maneira que você quiser.
+- ***CodeMirror-selected***:
+    a seleção é representada por elementos span.
+- ***CodeMirror-matchingbracket, CodeMirror-nonmatchingbracket***:
+    é usado para estilizar os colchetes.
 
 ## API
 [Voltar ao topo](#Índice)
@@ -205,15 +222,139 @@ Alguns cuidados devem ser tomados, já que várias regras neste arquivo são usa
 Muitas características do CodeMirror só estão disponíveis através de APIs. É preciso escrever códigos ou usar addons se você quiser deixá-las expostas para os usuários. Sempre que pontos no documento são representados, a API usa objetos com propriedades de* line* e *ch*. Se você atribuir algum valor nulo à *ch* ou não especificá-lo, ele será substituído pelo comprimento da linha especificada.
 
 Alguns métodos que podem ser usados:
-- ***Constructor***: é possível construir uma instância de editor com o construtor *CodeMirror(place: Element|fn(Element), ?option: object)*. Se o argumento *place* é um elemento DOM, o editor será anexado a ele. Se for uma função, ele será chamado e deve colocar o editor no documento. option deve ser um elemento que mapeia os valores de *option names*. As opções que não forem especificadas de forma explícita serão retirados de *CodeMirror.defaults*.
+- ***Constructor***:
+    é possível construir uma instância de editor com o construtor *CodeMirror(place: Element|fn(Element), ?option: object)*. Se o argumento *place* é um elemento DOM, o editor será anexado a ele. Se for uma função, ele será chamado e deve colocar o editor no documento. option deve ser um elemento que mapeia os valores de *option names*. As opções que não forem especificadas de forma explícita serão retirados de *CodeMirror.defaults*.
 - ***Content manipulation methods***
+    Lista de comandos disponíveis: *doc.getValue, doc.setValue, doc.getRange, doc.replaceRange, doc.getLine, doc.lineCount, doc.firstLine, doc.lastLine, doc.getLineHandle, doc.getLineNumber, doc.eachLine, doc.markClean, doc.changeGeneration, doc.isClean*
 - ***Cursor and selection methods***
+    Lista de comandos disponíveis: *doc.getSelection, doc.getSelections, doc.replaceSelection, doc.replaceSelections, doc.getCursor, doc.listSelections, doc.somethingSelected, doc.setCursor, doc.setSelection, doc.setSelections, doc.addSelection, doc.extendSelection, doc.extendSelections, doc.extendSelectionsBy, doc.setExtending, doc.getExtending, cm.hasFocus, cm.findPosH, cm.findPostV, cm.findWordAt*
 - ***Configuration methods***
+    Lista de comandos disponíveis: *cm.setOption, cm.getOption, cm.addKeyMap, cm.removeKeyMap, cm.addOverlay, cm.removeOverlay, cm.on, cm.off*
 - ***Document management methods***
+    Cada editor é associado a uma instância do CodeMirror.Doc. Um documento pode ser associado a apenas um editor por vez, e a criação de novos documentos pode ser realizada com o comando construtor
+
+    ``` javascript
+    CodeMirror.Doc(text, mode, firstLineNumber)
+    ```
+
+    Os dois últimos argumentos são opcionais e são utilizados para especificar um modo para o documento e o número da linha inicial do mesmo - que normalmente é 0.
+    Lista de comandos disponíveis: *cm.getDoc, doc.getEditor, cm.swapDoc, doc.copy, doc.linkedDoc, doc.unlinkDoc, doc.iterLinkedDocs*
 - ***History-related methods***
+    Lista de comandos disponíveis: *doc.undo, doc.redo, doc.undoSelection, doc.redoSelection, doc.historySize, doc.clearHistory, doc.getHistory, doc.setHistory*
 - ***Text-marking methods***
+    Lista de comandos disponíveis: *doc.markText, doc.setBookmark, doc.findMarks, doc.findMarksAt, doc.getAllMarks*
 - ***Widget, gutter and decoration methods***
+    Lista de comandos disponíveis: *doc.setGutterMarker, doc.clearGutter, doc.addLineClass, doc.removeLineClass, doc.lineInfo, cm.addWidget, doc.addLineWidget*
 - ***Sizing, scrolling and positioning methods***
+    Lista de comandos disponíveis: *cm.setSize, cm.scrollTo, cm.getScrollInfo, cm.scrollIntoView, cm.cursorCoords, cm.charCoords, cm.coordsChar, cm.lineAtHeight, cm.heightAtLine, cm.defaultTextHeight, cm.defaultCharWidth, cm.getViewPort, cm.refresh*
 - ***Mode, state and token-related methods***
+    Lista de comandos disponíveis: *doc.getMode, cm.getModeAt, cm.getTokenAt, cm.getTokenTypeAt, cm.getHelpers, cm.getHelper, cm.getStateAfter*
 - ***Miscellaneous methods***
+    Lista de comandos disponíveis: *cm.operation, cm.intentLine, cm.toggleOverwrite, cm.isReadOnly, doc.lineSeparator, cm.execCommand, doc.posFromIndex, doc.indexFromPos, cm.focus, cm.getInputField, cm.getWrapperElement, cm.getScrollerElement, cm.getGutterElement*
 - ***Static properties***
+    - *CodeMirror.version*
+    - *CodeMirror.fromTextArea*
+    - *CodeMirror.defaults*
+    - *CodeMirror.defineExtension*
+    - *CodeMirror.defineDocExtension*
+    - *CodeMirror.defineOption*
+    - *CodeMirror.defineInitHook*
+    - *CodeMirror.registerHelper*
+    - *CodeMirror.registerGlobalHelper*
+    - *CodeMirror.Pos*
+    - *CodeMirror.changeEnd*
+
+## Addons
+[Voltar ao topo](#Índice)
+
+O diretório *addon* presente na distribuição do CodeMirror possui uma vasta gama de componentes que implementam funcionalidades extras no editor. Alguns desses componentes são:
+- ***comment/comment.js***
+- ***comment/continuecomment.js***
+- ***dialog/dialog.js***:
+    Fornece um modelo simples de solicitar ao usuário que insira texto através do método
+
+    ``` javascript
+    openDialog(template, callback, options) -> closeFunction
+    ```
+
+    inserido nas instâncias do CodeMirror, que podem ser criadas como um fragmento HTML ou um elemento DOM independente - semelhante a um *pop-up* - que oferece um *prompt* e uma função *callback* que é chamada assim que o usuário pressiona a tecla *Enter*. Esse último passo nos leva então à função *closeFunction*, que fecha imediatamente a caixa de diálogo. A função *openDialog* trabalha com as seguintes opções:
+    - *closeOnEnter*:
+        Define se a caixa de diálogo será fechada ao detectar a tecla *Enter* pressionada pelo usuário.
+    - *closeOnBlur*:
+        Define se a caixa de diálogo será fechada quando perder o foco.
+    - *onKeyDown*:
+        Um *event handler* associado a detecção de teclas pressionadas.
+    - *onKeyUp*:
+        Comportamento análogo ao *onKeyDown*, porém ao detectar a tecla liberada.
+    - *onInput*:
+        Também semelhante ao *onKeyDown*, detecta entrada de texto.
+    - *onClose*:
+        Define uma função de *callback* a ser disparada quando a caixa de diálogo for fechada e removidada da DOM.
+- ***display/autorefresh.js***
+- ***display/fullscreen.js***
+- ***display/panel.js***
+- ***display/placeholder.js***
+- ***display/rulers.js***
+- ***edit/closebrackets.js***
+    Esse módulo fecha automaticamente as chaves e aspas abertas pelo usuário. Além dos padrões ainda é possível ensinar ao módulo quais outros tipos de pares devem ser fechados automaticamente.
+- ***edit/closetag.js***
+- ***edit/continuelist.js***
+- ***edit/matchbrackets.js***:
+Outro recurso de *highlight*, é responsável por indicar ao usuário as chaves responsáveis por abertura e fechamento de um bloco de comandos.
+- ***edit/matchtags.js***:
+    De maneira similar ao módulo matchbrackets, esse módulo é responsável pelo *highlight* de tags. A figura 13 ilustra o comportamento e é possível perceber sua utilidade ao mostrar para o usuário o escopo, dentro do código, no qual ele se encontra.
+
+    ![Figura 13](img/fig13.png)
+    > Figura 13
+- ***edit/trailingspace.js***
+- ***fold/foldcode.js***
+- ***fold/foldgutter.js***
+- ***hint/anyword-hint.js***
+- ***hint/css-hint.js***
+- ***hint/html-hint.js***
+- ***hint/javascript-hint.js***
+- ***hint/show-hint.js***
+- ***hint/sql-hint.js***
+- ***hint/xml-hint.js***
+- ***lint/lint.js***
+- ***merge/merge.js***
+    Esse módulo adiciona uma funcionalidade bastante interessante para fundir modificações de 2 ou 3 fontes simultaneamente. O construtor *CodeMirror.MerView* recebe argumentos de maneira similar ao construtor *CodeMirror*: primeiramente um lugar para inserir o elemento e depois um objeto contendo demais opções para instenciar o elemento. Eis uma lista com as opções dispníveis:
+    - *origLeft* e *origRight*: Define em que lado da tela será exibido o arquivo original. Apenas um deles deve ser usado no caso do *2-way-merge*.
+    - *revertButtons*: Define se deve mostrar os botões de reversão de modificações para o usuário.
+    - *revertChunk*: Define o comportamento a ser executado quando o usuário modificar um bloco.
+    - *connect*: Define o estilo do conector utilizado para apontar dois blocos - o original e o correspondente modificado.
+    - *collapseIdentical*:
+    - *allowEditingOriginals*:
+    - *showDifferences*:
+    - *chunkClassLocation*:
+    A figura 14 mostra um exemplo de *2-way-merge* com um *highlight* em dois blocos, com o original à direita.
+
+    ![Figura 14](img/fig14.png)
+    > Figura 14
+- ***mode/loadmode.js***
+- ***mode/meta.js***
+- ***mode/multiplex.js***
+- ***mode/overlay.js***
+- ***runmode/runmode.js***
+- ***runmode/colorize.js***
+- ***scroll/annotatescrollbar.js***
+- ***scroll/simplescrollbars.js***
+- ***search/jump-to-line.js***
+    Implementa módulo responsável por permitir ao usuário saltar até determinada linha no código.
+- ***search/match-highlighter.js***
+- ***search/matchesonscrollbar.js***
+    Esse arquivo implementa uma funcionalidade muito útil que mostra, na barra de rolagem, em quais linhas há ocorrências de uma string buscada. Depende do *addon* annotatescrollbar.
+- ***search/search.js***:
+    Esse arquivo implementa as funcionalidades de busca. Por padrão, o CodeMirror já possui associações de teclas a tais funcionalidades, mas não faz nada com elas a não ser que a busca esteja implementada. As funções previstas nesse arquivo dependem do arquivo *search/searchcursor.js*, e utilizam também o método  openDialog().
+- ***search/searchCursor.js***: Adiciona o método
+
+    ``` javascript
+    getSearchCursor(query, start, caseFold) -> cursor
+    ```
+
+    às instâncias do CodeMirror, que podem ser utilizadas para implementar a funcionalidade de busca/substituição. O parâmetro *query* pode ser uma expressão regular ou uma string. *start* define a posição inicial para a busca (por padrão, inicia no primeiro caractere do arquivo). Por fim, o parâmetro *caseFold* define se a busca será *case-sentitive* ou *case-insensitive*. Um cursor de busca possui os seguintes métodos: *findNext(), findPrevious(), from(), to(), replace()*.
+- ***selection/active-line.js***
+- ***selection/mark-selection.js***
+- ***selection/selection-pointer.js***
+- ***tern/tern.js***
+- ***wrap/hardwrap.js***
